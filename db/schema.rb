@@ -13,6 +13,58 @@
 
 ActiveRecord::Schema.define(version: 20150716184040) do
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "label",       limit: 255
+    t.integer  "category_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.integer  "zip",        limit: 4
+    t.string   "city",       limit: 255
+    t.float    "latitude",   limit: 24
+    t.float    "longitude",  limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "criteria", force: :cascade do |t|
+    t.string   "type_of",     limit: 255
+    t.string   "label",       limit: 255
+    t.integer  "interest_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "interests", force: :cascade do |t|
+    t.string   "cgt_code",    limit: 255
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.string   "address",     limit: 255
+    t.integer  "zip",         limit: 4
+    t.string   "mobile",      limit: 255
+    t.string   "phone",       limit: 255
+    t.string   "email",       limit: 255
+    t.string   "website",     limit: 255
+    t.float    "latitude",    limit: 24
+    t.float    "longitude",   limit: 24
+    t.string   "source",      limit: 255
+    t.integer  "category_id", limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "source_id",   limit: 4
+    t.integer  "city_id",     limit: 4
+  end
+
+  create_table "media", force: :cascade do |t|
+    t.integer  "interest_id", limit: 4
+    t.string   "type",        limit: 255
+    t.string   "url",         limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
