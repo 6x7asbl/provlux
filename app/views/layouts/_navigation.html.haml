@@ -1,12 +1,10 @@
--# navigation styled for Zurb Foundation 5
--# the syntax for data-topbar may need to change for Zurb Foundation 5
-%nav.top-bar{"data-topbar" => true}
-  %ul.title-area
-    %li.name
-      = link_to 'Home', root_path
-    %li.toggle-topbar.menu-icon
-      %a{:href => "#"}
-        Menu
-  .top-bar-section
-    %ul
-      = render 'layouts/navigation_links'
+%nav.blog-nav
+  = active_link_to "Accueil",   root_path,       class: 'blog-nav-item', active: [['visitors'], ['index']]
+  = active_link_to "Commerces", businesses_path, class: 'blog-nav-item', active: [['pages'], ['businesses']]
+  = active_link_to "Tourisme",  tourism_path,    class: 'blog-nav-item', active: [['pages'], ['tourism']]
+  = active_link_to "Agenda",    agenda_path,     class: 'blog-nav-item', active: [['pages'], ['agenda']]
+  = active_link_to "Actualité", news_path,       class: 'blog-nav-item', active: [['pages'], ['news']]
+  / %a.blog-nav-item{:href => "#"} New features
+  / %a.blog-nav-item{:href => "#"} Press
+  / %a.blog-nav-item{:href => "#"} New hires
+  / %a.blog-nav-item{:href => "#"} About

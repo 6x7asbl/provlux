@@ -1,4 +1,4 @@
-class InterestsController < Storytime::ApplicationController
+class InterestsController < ApplicationController
   include InterestsFinder
   before_filter :get_interests, only: [:index, :map, :liked]
   before_filter :get_coordinates, only: [:index, :map, :liked]
@@ -7,7 +7,7 @@ class InterestsController < Storytime::ApplicationController
   end
 
   def show
-    @interest = Interest.find(params[:id])
+    @interest = Interest.find(params[:id]).decorate
   end
 
   def map

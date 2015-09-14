@@ -1,0 +1,35 @@
+.row
+  .col-md-12
+    %h1.interest-name= @interest.name
+    .meta.mb20
+      - @interest.categories.map do |category|
+        = link_to t(category.label, scope: :categories), category_interests_path(category), class: 'label label-default'
+
+    .well
+      = @interest.description
+  .col-md-6
+    %h4 Contact & information
+    %ul.list-unstyled
+      %li.phone-number
+        %i.fa.fa-phone
+        = @interest.phone
+      %li.website-url
+        %i.fa.fa-globe
+        = link_to @interest.website, @interest.website, target: '_blank'
+    - @interest.interest_urls.each do |social_media|
+
+      = link_to social_media.url, target: '_blank', class: "btn btn-social btn-#{social_media.provider_html_class}" do
+        %i{ class: "fa fa-#{social_media.provider_html_class}"}
+        = social_media.provider_name
+
+    / %p= @interest.latitude
+    / %p= @interest.longitude
+
+  .col-md-6
+    - if @interest.has_opening_hours?
+      %h4 Heures d'ouvertures
+      = opening_hours_table @interest.opening_hours
+  .col-md-12
+    %h2 Pictures
+    - @interest.pictures.each do |picture|
+      = image_tag(picture.image.url)

@@ -8,21 +8,29 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'geocoder', '~> 1.2.7'
+gem 'scoped_search', '~> 3.2.1'
+gem 'draper', '~> 2.1.0'
+gem 'dragonfly', '~> 1.0.11'
+gem 'font-awesome-rails', '~> 4.4.0.0'
+gem 'bootstrap-social-rails', '~> 4.8.0'
 
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
+
 gem 'devise'
 gem 'devise-i18n'
 gem 'figaro', '>= 1.0.0.rc1'
-gem 'foundation-rails'
+gem 'bootstrap-sass', '~> 3.3.5'
 gem 'haml-rails'
 gem 'mysql2'
 gem 'pundit'
 gem 'simple_form'
 gem 'upmin-admin'
+gem 'active_link_to', '~> 1.0.3'
+
 group :development do
   gem 'better_errors'
   gem 'capistrano', '~> 3.0.1'

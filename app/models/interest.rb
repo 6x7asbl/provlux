@@ -1,28 +1,36 @@
 class Interest < ActiveRecord::Base
   has_many :medium
   has_many :pictures
-  has_many :videos
+  has_many :interest_urls
+  # has_many :videos
   has_many :criteria
-  belongs_to :category
-  belongs_to :city, foreign_key: :zip
+  has_many :opening_hours
+  has_and_belongs_to_many :categories
+  # belongs_to :city, foreign_key: :zip
 
+  default_scope { where(country_code: 'be') }
+  # TODO : add index on country_code
 
   scoped_search on: [:name, :description, :address, :website]
   scoped_search in: :city, on: [:city]
   scoped_search in: :category, on: [:label]
 
-  acts_as_likeable
+  scope :latests, -> { limit(10).order('id desc')}
 
   def has_pictures?
     self.pictures.any?
   end
 
-  def coordinates
-    [latitude, longitude]
+  def has_opening_hours?
+    self.opening_hours.any?
   end
 
-  def city_name
-    city.name
+  def main_picture
+    pictures.first
+  end
+
+  def coordinates
+    [latitude, longitude]
   end
 
   def excerpt

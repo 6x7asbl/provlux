@@ -1,0 +1,6 @@
+.row
+  .medium-12.columns
+    %h4= t(@category.label, scope: :categories)
+    = @category.inspect
+.row
+  = render @interests

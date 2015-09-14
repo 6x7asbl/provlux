@@ -1,17 +1,82 @@
 !!!
 %html
   %head
-    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     %title= content_for?(:title) ? yield(:title) : 'Provlux'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Provlux'}"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    -# Modernizr is required for Zurb Foundation
     = javascript_include_tag 'vendor/modernizr'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %header
-      = render 'layouts/navigation'
-    %main{:role => "main"}
-      = render 'layouts/messages'
-      = yield
+    .blog-masthead
+      .container
+        = render 'layouts/navigation'
+    .container
+      .blog-header
+        %h1.blog-title ProvLux.be
+        %p.lead.blog-description Tourisme, commerces et actualité du Luxembourg Belge
+      .row
+        .col-sm-8.blog-main
+          = render 'layouts/messages'
+          = yield
+
+        .col-sm-3.col-sm-offset-1.blog-sidebar
+          = yield(:sidebar)
+          .sidebar-module.sidebar-module-inset
+            %h4 About
+            %p
+              Etiam porta
+              %em sem malesuada magna
+              mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+          .sidebar-module
+            %h4 Archives
+            %ol.list-unstyled
+              %li
+                %a{:href => "#"} March 2014
+              %li
+                %a{:href => "#"} February 2014
+              %li
+                %a{:href => "#"} January 2014
+              %li
+                %a{:href => "#"} December 2013
+              %li
+                %a{:href => "#"} November 2013
+              %li
+                %a{:href => "#"} October 2013
+              %li
+                %a{:href => "#"} September 2013
+              %li
+                %a{:href => "#"} August 2013
+              %li
+                %a{:href => "#"} July 2013
+              %li
+                %a{:href => "#"} June 2013
+              %li
+                %a{:href => "#"} May 2013
+              %li
+                %a{:href => "#"} April 2013
+          .sidebar-module
+            %h4 Elsewhere
+            %ol.list-unstyled
+              %li
+                %a{:href => "#"} GitHub
+              %li
+                %a{:href => "#"} Twitter
+              %li
+                %a{:href => "#"} Facebook
+        / /.blog-sidebar
+      / /.row
+    / /.container
+    %footer.blog-footer
+      %p
+        Blog template built for
+        %a{:href => "http://getbootstrap.com"} Bootstrap
+        by
+        = succeed "." do
+          %a{:href => "https://twitter.com/mdo"} @mdo
+      %p
+        %a{:href => "#"} Back to top
+

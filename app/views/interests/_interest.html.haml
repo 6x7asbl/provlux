@@ -1,0 +1,28 @@
+/ .large-4.columns
+/   %h4
+/     = link_to [interest.categories.first, interest] do
+/       = interest.name
+/   = interest.description
+/   %address
+/     = interest.address
+/     %br
+/     = interest.zip
+/     = interest.city
+/   / = interest.website
+/   - if interest.pictures.any?
+/     = link_to [interest.categories.first, interest] do
+/       = image_tag interest.main_picture.image.url
+.blog-post
+  = link_to [interest.categories.first, interest] do
+    %h2.blog-post-title= interest.name
+  %p.blog-post-meta
+    Catégories:
+    - interest.categories.each do |category|
+      = link_to t(category.label, scope: :categories), category_interests_path(category)
+  %p
+    %address
+    = interest.address
+    %br
+    = interest.zip
+    = interest.city
+  / = interest.website
