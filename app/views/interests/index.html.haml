@@ -1,6 +1,7 @@
-.row
-  .medium-12.columns
-    %h4= t(@category.label, scope: :categories)
-    = @category.inspect
-.row
-  = render @interests
+.medium-12.columns
+  - if current_city
+    %h3= "#{t(@category.label, scope: :categories)} à #{current_city.name}"
+  - else
+    %h3= t(@category.label, scope: :categories)
+
+= render @interests

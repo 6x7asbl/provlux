@@ -1,0 +1,5 @@
+.row
+  - children.each do |category|
+    .col-sm-6.col-xs-12
+      = link_to category_interests_path(category) do
+        = t(category.label, scope: :categories)

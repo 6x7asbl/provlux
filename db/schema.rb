@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914103417) do
+ActiveRecord::Schema.define(version: 20150914135419) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "label",       limit: 255
     t.integer  "category_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.boolean  "master",                  default: false
   end
 
   create_table "categories_interests", id: false, force: :cascade do |t|
@@ -60,7 +61,8 @@ ActiveRecord::Schema.define(version: 20150914103417) do
   add_index "interest_urls", ["interest_id"], name: "index_interest_urls_on_interest_id", using: :btree
   add_index "interest_urls", ["provider"], name: "index_interest_urls_on_provider", using: :btree
 
-  create_table "interests", force: :cascade do |t|
+  create_table "interests", id: false, force: :cascade do |t|
+    t.integer  "id",           limit: 4,     default: 0, null: false
     t.string   "cgt_code",     limit: 255
     t.string   "name",         limit: 255
     t.text     "description",  limit: 65535
@@ -73,17 +75,13 @@ ActiveRecord::Schema.define(version: 20150914103417) do
     t.float    "latitude",     limit: 24
     t.float    "longitude",    limit: 24
     t.string   "source",       limit: 255
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "source_id",    limit: 255
     t.integer  "city_id",      limit: 4
     t.string   "country_code", limit: 2
     t.string   "city",         limit: 255
   end
-
-  add_index "interests", ["country_code"], name: "index_interests_on_country_code", using: :btree
-  add_index "interests", ["latitude", "longitude"], name: "index_interests_on_latitude_and_longitude", using: :btree
-  add_index "interests", ["source", "source_id"], name: "index_interests_on_source_and_source_id", using: :btree
 
   create_table "media", force: :cascade do |t|
     t.integer  "interest_id", limit: 4

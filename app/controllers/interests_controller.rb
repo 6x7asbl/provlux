@@ -4,6 +4,7 @@ class InterestsController < ApplicationController
   before_filter :get_coordinates, only: [:index, :map, :liked]
   before_filter :define_title, only: [:index, :liked]
   def index
+
   end
 
   def show

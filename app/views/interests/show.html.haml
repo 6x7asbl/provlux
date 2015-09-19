@@ -32,4 +32,4 @@
   .col-md-12
     %h2 Pictures
     - @interest.pictures.each do |picture|
-      = image_tag(picture.image.url)
+      = image_tag(picture.image.thumb('235x235#').url, class: 'img-thumbnail mb5')

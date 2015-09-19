@@ -7,6 +7,7 @@ class Interest < ActiveRecord::Base
   has_many :opening_hours
   has_and_belongs_to_many :categories
   # belongs_to :city, foreign_key: :zip
+  geocoded_by :full_address
 
   default_scope { where(country_code: 'be') }
   # TODO : add index on country_code

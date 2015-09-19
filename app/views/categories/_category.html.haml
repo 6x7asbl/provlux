@@ -1,0 +1,5 @@
+.row
+  .col-xs-12
+    %h3
+      = t(category.label, scope: :categories)
+    = render partial: "categories/children", locals: { children: category.children } if category.has_children?

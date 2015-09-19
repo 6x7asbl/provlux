@@ -18,7 +18,7 @@
   %p.blog-post-meta
     Catégories:
     - interest.categories.each do |category|
-      = link_to t(category.label, scope: :categories), category_interests_path(category)
+      = link_to t(category.label, scope: :categories), category_interests_path(category), class: 'label label-default'
   %p
     %address
     = interest.address
