@@ -1,0 +1,18 @@
+%script{ :type => 'text/javascript' }
+  :plain
+    #{ current_user ? "window.current_user = new Apptweak.Models.User(#{ Rabl::Renderer.json(current_user, 'users/show') });" : "" }
+    #{ session[:previous_url] ? "window.return_to = '#{ session[:previous_url] }'" : "" }
+
+    var class_name = null;
+    try{
+      var class_name = #{backbone_view_class_name};
+    } catch(error) {}
+
+    var loadBackboneView = function(class_name){
+      new Apptweak.Views.ApplicationView({
+        view:       class_name,
+        view_data:  { #{backbone_view_data} }
+      });
+    }
+
+    $(window).bind('page:change', loadBackboneView(class_name))

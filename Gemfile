@@ -13,12 +13,9 @@ gem 'draper', '~> 2.1.0'
 gem 'dragonfly', '~> 1.0.11'
 gem 'font-awesome-rails', '~> 4.4.0.0'
 gem 'bootstrap-social-rails', '~> 4.8.0'
-
-group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-end
+gem 'rabl', '~> 0.11.6'
+gem 'oj', '~> 2.12.14'
+gem 'rails-backbone', '~> 1.2.0'
 
 gem 'devise'
 gem 'devise-i18n'
@@ -45,6 +42,9 @@ group :development do
   gem 'spring-commands-rspec'
 end
 group :development, :test do
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'pry-rails'
