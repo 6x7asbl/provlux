@@ -6,7 +6,7 @@ module BackboneHelper
     else
       controller.action_name
     end.camelize
-    "Apptweak.Views.#{params[:controller].camelize.gsub("::", ".")}.#{action}View"
+    "Provlux.Views.#{params[:controller].camelize.gsub("::", ".")}.#{action}View"
   end
 
   def backbone_view_data

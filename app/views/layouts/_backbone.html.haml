@@ -1,6 +1,7 @@
 %script{ :type => 'text/javascript' }
   :plain
-    #{ current_user ? "window.current_user = new Apptweak.Models.User(#{ Rabl::Renderer.json(current_user, 'users/show') });" : "" }
+    #{ current_user ? "window.current_user = new Provlux.Models.User(#{ Rabl::Renderer.json(current_user, 'users/show') });" : "" }
+    #{ current_city ? "window.current_city = new Provlux.Models.City(#{ Rabl::Renderer.json(current_city, 'cities/show') });" : "" }
     #{ session[:previous_url] ? "window.return_to = '#{ session[:previous_url] }'" : "" }
 
     var class_name = null;
@@ -9,7 +10,7 @@
     } catch(error) {}
 
     var loadBackboneView = function(class_name){
-      new Apptweak.Views.ApplicationView({
+      new Provlux.Views.ApplicationView({
         view:       class_name,
         view_data:  { #{backbone_view_data} }
       });

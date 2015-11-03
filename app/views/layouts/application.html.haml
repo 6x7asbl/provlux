@@ -7,7 +7,6 @@
     %title= content_for?(:title) ? yield(:title) : 'Provlux'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Provlux'}"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'vendor/modernizr'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
@@ -25,6 +24,9 @@
 
         .col-sm-3.col-sm-offset-1.blog-sidebar
           = yield(:sidebar)
+          .map-container
+            %h4 Sélection par commune
+            = render partial: "shared/maps/provlux"
           .sidebar-module.sidebar-module-inset
             %h4 About
             %p

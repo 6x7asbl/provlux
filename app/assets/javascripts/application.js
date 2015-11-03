@@ -19,6 +19,9 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/provlux
+//= require jquery-jvectormap-2.0.4.min
+
+//= require jvectormap/maps/provlux_merc_fr
 //= require_tree .
 
 $(function() {
