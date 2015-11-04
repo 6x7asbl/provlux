@@ -25,8 +25,10 @@ gem 'haml-rails'
 gem 'mysql2'
 gem 'pundit'
 gem 'simple_form'
-gem 'upmin-admin'
+# gem 'upmin-admin'
 gem 'active_link_to', '~> 1.0.3'
+gem 'kaminari'
+gem 'redactor-rails', '~> 0.5.0'
 
 group :development do
   gem 'better_errors'

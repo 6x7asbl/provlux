@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914135419) do
+ActiveRecord::Schema.define(version: 20151104084553) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "label",       limit: 255
@@ -61,8 +61,7 @@ ActiveRecord::Schema.define(version: 20150914135419) do
   add_index "interest_urls", ["interest_id"], name: "index_interest_urls_on_interest_id", using: :btree
   add_index "interest_urls", ["provider"], name: "index_interest_urls_on_provider", using: :btree
 
-  create_table "interests", id: false, force: :cascade do |t|
-    t.integer  "id",           limit: 4,     default: 0, null: false
+  create_table "interests", force: :cascade do |t|
     t.string   "cgt_code",     limit: 255
     t.string   "name",         limit: 255
     t.text     "description",  limit: 65535
@@ -75,13 +74,16 @@ ActiveRecord::Schema.define(version: 20150914135419) do
     t.float    "latitude",     limit: 24
     t.float    "longitude",    limit: 24
     t.string   "source",       limit: 255
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "source_id",    limit: 255
     t.integer  "city_id",      limit: 4
     t.string   "country_code", limit: 2
     t.string   "city",         limit: 255
   end
+
+  add_index "interests", ["latitude", "longitude"], name: "latitude", using: :btree
+  add_index "interests", ["source", "source_id"], name: "source", unique: true, using: :btree
 
   create_table "media", force: :cascade do |t|
     t.integer  "interest_id", limit: 4
@@ -113,6 +115,36 @@ ActiveRecord::Schema.define(version: 20150914135419) do
 
   add_index "pictures", ["interest_id"], name: "index_pictures_on_interest_id", using: :btree
 
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.string   "title",        limit: 255
+    t.text     "excerpt",      limit: 65535
+    t.text     "content",      limit: 65535
+    t.boolean  "pinned"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.datetime "published_at"
+  end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "redactor_assets", force: :cascade do |t|
+    t.integer  "user_id",           limit: 4
+    t.string   "data_file_name",    limit: 255, null: false
+    t.string   "data_content_type", limit: 255
+    t.integer  "data_file_size",    limit: 4
+    t.integer  "assetable_id",      limit: 4
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width",             limit: 4
+    t.integer  "height",            limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable", using: :btree
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -133,4 +165,5 @@ ActiveRecord::Schema.define(version: 20150914135419) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "posts", "users"
 end

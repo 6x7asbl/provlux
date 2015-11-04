@@ -1,0 +1,11 @@
+= simple_form_for(@post) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :excerpt
+    = f.input :content, input_html: { class: 'redactor', rows: 40, cols: 120 }
+    / = f.input :pinned
+
+  .form-actions
+    = f.button :submit

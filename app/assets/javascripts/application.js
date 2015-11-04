@@ -21,6 +21,8 @@
 //= require backbone/provlux
 //= require jquery-jvectormap-2.0.4.min
 
+//= require redactor-rails
+//= require redactor-rails/langs/fr
 //= require jvectormap/maps/provlux_merc_fr
 //= require_tree .
 

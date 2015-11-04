@@ -1,0 +1,10 @@
+%h2
+  = link_to post do
+    = post.title
+.post-excerpt
+  = post.excerpt
+
+  = link_to post do
+    Lire la suite
+
+= render partial: "meta", locals: { post: post }

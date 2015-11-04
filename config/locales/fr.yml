@@ -2,6 +2,19 @@ fr:
   time:
     formats:
       h_m: '%Hh%M'
+  simple_form:
+    labels:
+      post:
+        title: Titre
+        excerpt: Introduction
+        content: Contenu
+      hints:
+        excerpt: L'introduction est utilisée dans les pages de listings d'article et en introduction de l'article lui-même
+  helpers:
+    submit:
+      post:
+        create: "Proposer l'article"
+        update: "Mettre à jour l'article"
   categories:
     master_food: "Restauration"
     master_shopping: "Shopping"

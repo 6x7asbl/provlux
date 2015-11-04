@@ -1,0 +1,9 @@
+%h1= @post.title
+
+%p.lead
+  = @post.excerpt
+
+.post-content
+  = @post.content
+
+= render partial: "meta", locals: { post: @post }

@@ -1,10 +1,20 @@
 %nav.blog-nav
-  = active_link_to "Accueil",   root_path,       class: 'blog-nav-item', active: [['visitors'], ['index']]
-  = active_link_to "Commerces", businesses_path, class: 'blog-nav-item', active: [['pages'], ['businesses']]
-  = active_link_to "Tourisme",  tourism_path,    class: 'blog-nav-item', active: [['pages'], ['tourism']]
-  = active_link_to "Agenda",    agenda_path,     class: 'blog-nav-item', active: [['pages'], ['agenda']]
-  = active_link_to "Actualité", news_path,       class: 'blog-nav-item', active: [['pages'], ['news']]
-  / %a.blog-nav-item{:href => "#"} New features
-  / %a.blog-nav-item{:href => "#"} Press
-  / %a.blog-nav-item{:href => "#"} New hires
-  / %a.blog-nav-item{:href => "#"} About
+  %ul.nav.navbar-nav
+    %li= active_link_to "Accueil",   root_path,       class: 'blog-nav-item', active: [['visitors'], ['index']]
+    %li= active_link_to "Commerces", businesses_path, class: 'blog-nav-item', active: [['pages'], ['businesses']]
+    %li= active_link_to "Tourisme",  tourism_path,    class: 'blog-nav-item', active: [['pages'], ['tourism']]
+    %li= active_link_to "Agenda",    agenda_path,     class: 'blog-nav-item', active: [['pages'], ['agenda']]
+    %li= active_link_to "Actualité", posts_path,      class: 'blog-nav-item', active: [['posts'], []]
+
+  %ul.nav.navbar-nav.navbar-right
+    %li
+      %a.blog-nav-item{:href => "#"} Link
+    %li.dropdown
+      %a.blog-nav-item.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        Mon compte
+        %span.caret
+      %ul.dropdown-menu
+        %li= link_to "Publier un article", new_admin_post_path
+        %li.divider{:role => "separator"}
+        %li
+          %a{:href => "#"} Déconnexion

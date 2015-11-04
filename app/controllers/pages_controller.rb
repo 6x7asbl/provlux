@@ -6,5 +6,4 @@ class PagesController < ApplicationController
 
   def tourism; end
   def agenda; end
-  def news; end
 end

@@ -1,0 +1,13 @@
+.post-meta
+  %hr
+  %ul.list-unstyled.list-inline
+    %li
+      %i.fa.fa-user
+      = post.user.name
+    %li
+      %i.fa.fa-calendar
+      = l(post.published_at, format: :short)
+    - if policy(post).update?
+      %li
+        %i.fa.fa-pencil
+        = link_to 'Modifier', edit_admin_post_path(post)

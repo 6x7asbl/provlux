@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  mount Upmin::Engine => '/admin'
+
+  mount RedactorRails::Engine => '/redactor_rails'
   root to: 'visitors#index'
   devise_for :users
   resources :interests, only: [:index, :show]
@@ -14,6 +15,11 @@ Rails.application.routes.draw do
   match '/businesses/', to: 'pages#businesses', via: :get, as: :businesses
   match '/tourism/',    to: 'pages#tourism',    via: :get, as: :tourism
   match '/agenda/',     to: 'pages#agenda',     via: :get, as: :agenda
-  match '/news/',       to: 'pages#news',       via: :get, as: :news
+
+  resources :posts, only: [:index, :show]
+
+  namespace :admin do
+    resources :posts
+  end
 
 end
